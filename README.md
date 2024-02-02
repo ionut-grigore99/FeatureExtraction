@@ -25,11 +25,9 @@ Lastly, we also tried to keep the problem as a finetuning classification task us
 <br />
 <br />
 The consistency loss can be mathematically defined as follows: 
-<br />
-<br />
+
 ![img.png](assets/consistency_loss.png)
-<br />
-<br />
+
 where _p_, _p′_ denote the predictions for the original and warped images, _H_ is a homography, _m_, _m′_ are the corresponding ground truth masks, _σ_ is the sigmoid function, and _S_ is the softmax function.
 <br />
 <br />
