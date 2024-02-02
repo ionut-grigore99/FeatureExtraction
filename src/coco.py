@@ -52,7 +52,6 @@ class Coco(Dataset):
         else:
             im = torch.from_numpy(np.array(Image.open(self.files[idx]).convert("L").resize((self.W, self.H))))[None, ...].float() / 255.
             # if torch.cuda.is_available(): im = im.cuda()
-            #breakpoint()
             pred = self.extractor.extract(im)
             breakpoint()
             kpts = pred["keypoints"].squeeze().long().T
@@ -73,8 +72,6 @@ class Coco(Dataset):
         # if torch.cuda.is_available(): self.matcher.cuda()
 
     def _label_smoothing(self, mask, eps=0.1): return (1 - eps) * mask + eps * (1 - mask)
-
-    def _rolling_window(self, lst, k): return [(lst[i:i+k]) for i in range(len(lst) - k + 1)]
 
     def _get_mask(self, shape, kpts, im=None):
         def _apply_mask_processing(mask):

@@ -1,0 +1,42 @@
+[build-system]
+requires = ["setuptools", "setuptools-scm"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "SP-FPN"
+dynamic = ["version"]
+authors = [
+    { name = "Leoveanu-Condrei Claudiu", email = "leoveac@amazon.com" },
+    { name = "Ionut-Orlando Grigore-Atimut", email = "grigiono@amazon.com" }
+]
+
+description = "SuperPoint Feature Pyramid Network."
+readme = "README.md"
+requires-python = ">=3.8"
+
+dependencies = [
+    "pyyaml==6.0",
+    "einops==0.6.0",
+    "scipy==1.10.1",
+    "pytorch-model-summary==0.1.2",
+    "opencv-python==4.7.0.72",
+    "numpy==1.24.2",
+    "tensorboard==2.12.0",
+    "sagemaker==2.178.0",
+    "kornia==0.6.10",
+    "nevergrad==0.6.0",
+    "onnx==1.14.0",
+    "lovely-tensors==0.1.15"
+]
+
+[project.optional-dependencies]
+dev = [
+    "torch==1.12.0",
+    "torchvision==0.13.0",
+    "imgaug==0.4.0",
+    "matplotlib==3.7.1"
+]
+
+[tool.setuptools.packages.find]
+include = ["src"]
+exclude = ["notebooks"]

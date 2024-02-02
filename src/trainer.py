@@ -18,7 +18,7 @@ from tqdm import tqdm
 
 from ..datasets.coco import Coco
 from ..datasets.kitti import Kitti
-from .keypoints_detector import KeypointDetector
+from src.models.keypoints_detector import KeypointDetector
 
 
 class Trainer:
