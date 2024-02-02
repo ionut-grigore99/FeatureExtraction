@@ -1,0 +1,43 @@
+# model
+feature_dim: 1024
+grid_size: 8
+nms_size: 8
+nms_det_thresh: 0.015 # large impact upon the quality of results; tested values 0.015 (1/65) and 0.001
+nms_topk: -1 # -1 deactivate or k
+num_kpts: 250 # teacher num of sample points
+backbone: 'mobilenetv3_small_100.lamb_in1k'
+backbone_out_channels: 576
+pretrained: true
+
+# random homography
+n_homographies: 10
+allow_artifacts: false
+perspective: true
+scaling: true
+rotation: true
+translation: true
+n_scales: 5
+n_angles: 25
+scaling_amplitude: 0.2
+perspective_amplitude_x: 0.2
+perspective_amplitude_y: 0.2
+patch_ratio: 0.85
+max_angle: 0.2617993877991494 # pi / 12 (15 degrees)
+translation_overflow: 0.
+std_trunc: 2
+
+#training
+epochs: 6
+lr: 0.003
+bs: 64 # 128 or 1 for overfit
+weight_decay: 0.0001
+annealing_factor: 0.01
+
+# misc
+device: ['cuda:0', 'cuda:1', 'cuda:2', 'cuda:3'] # "[cuda:i, cuda:j, ...]" for DataParallel or "cuda:i" for 1 gpu use
+resolution: [640, 480] # W H
+use_aug: true
+coco_train_dir: '/data/COCO/train2017'
+coco_eval_dir: '/data/COCO/val2017'
+tsboard_dir: '/data/FeatureExtraction'
+
